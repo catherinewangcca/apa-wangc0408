@@ -3,15 +3,34 @@
 //Name -
 //Date -
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
-public class ListDown
-{
-  //go() will return true if all numbers in numArray
-  //are in decreasing order [31,12,6,2,1]
-  public static boolean go(List<Integer> numArray)
-  {
-    return true;
-  }	
+public class ListDown{
+  ArrayList<Integer> numbers = new ArrayList<Integer>();
+  boolean descend = true;
+
+  public ListDown(){
+
+  }
+
+  public ListDown(ArrayList<Integer> ray){
+    setArray(ray);
+  }
+
+  public void setArray(ArrayList<Integer> ray){
+    numbers = ray;
+  }
+
+  public void checkOrder(){
+    for (int i = 0; i<numbers.size()-1; i++){
+      if (numbers.get(i)<numbers.get(i+1)){
+        descend = false;
+        break;
+      }
+    }
+  }
+
+  public String toString(){
+    return descend + "";
+  }
 }
