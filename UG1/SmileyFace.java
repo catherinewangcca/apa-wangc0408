@@ -1,4 +1,4 @@
-//(c) A+ Computer Science
+ //(c) A+ Computer Science
 //www.apluscompsci.com
 
 //Name -
@@ -26,14 +26,19 @@ public class SmileyFace extends Canvas
 
    public void smileyFace( Graphics window )
    {
+	window.setColor(Color.YELLOW);
+	window.fillOval(210, 100, 400, 400);
+	
       window.setColor(Color.BLUE);
       window.drawString("SMILEY FACE LAB ", 35, 35);
 
-      window.setColor(Color.YELLOW);
-      window.fillOval( 210, 100, 400, 400 );
+      window.fillOval(350, 200, 80,80);
+	window.fillOval(450, 200, 80, 80);
+   window.fillOval(400, 290, 40, 40);
 
-		//add more code here
-
-
+	window.setColor(Color.RED);
+	window.drawArc(300, 380,200,15,250,120);
+	
+  			
    }
 }
