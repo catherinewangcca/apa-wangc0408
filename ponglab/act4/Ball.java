@@ -111,6 +111,35 @@ public class Ball extends Block
   }
 
   
+  public boolean didCollideLeft(Block obj){
+      if (obj instanceof Wall){
+      return (getX() == obj.getX() && getY() >= obj.getY() && getY() <= obj.getY() + obj.getHeight());
+    }
+    return false;
+   } 
+
+  public boolean didCollideRight(Block obj){
+      if (obj instanceof Wall){
+      return (getX() + getWidth() == obj.getX() && getY() >= obj.getY() && getY() <= obj.getY() + obj.getHeight());
+    }
+    return false;
+  } 
+
+  public boolean didCollideTop(Block obj){
+      if (obj instanceof Wall){
+      return (getY() == obj.getY() && getX() >= obj.getX() && getX() <= obj.getX() + obj.getWidth());
+    }
+    return false;
+  } 
+
+  public boolean didCollideBottom(Block obj){
+    if (obj instanceof Wall){
+     return (getY() == obj.getY() && getX() >= obj.getX() && getX() <= obj.getX() + obj.getWidth());
+    }
+    return false;
+  }  
+      
+
 
   //add a toString() method
   public String toString()
