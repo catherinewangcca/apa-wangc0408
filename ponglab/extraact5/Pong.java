@@ -27,6 +27,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
   private Wall rightWall;
   private Wall topWall;
   private Wall bottomWall;
+  private boolean[] invisibleGrid;
 
   public Pong()
   {
@@ -55,6 +56,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 
     keys = new boolean[4];
+    invisibleGrid = new boolean[2];
 
     
     setBackground(Color.WHITE);
