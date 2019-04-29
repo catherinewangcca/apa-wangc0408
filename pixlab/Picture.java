@@ -320,6 +320,53 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
+      }
+    }
+    System.out.println(count);
+  }
+
+  public void mirrorArms()
+  {
+    int mirrorPoint = 190; //mirror at row 199
+    Pixel sourcePixel = null;
+    Pixel receivePixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    //loop thru rows for first arm
+    for (int row = 158; row < mirrorPoint; row++){
+      //loop columns 100 to 169 - left arm
+      for (int col = 100; col < 169; col++){
+        sourcePixel = pixels[row][col];
+        receivePixel = pixels[mirrorPoint + mirrorPoint - row][col];
+        receivePixel.setColor(sourcePixel.getColor());
+      }
+    }
+
+    //loop thru rows for second arm
+    mirrorPoint = 195;
+    for (int row = 169; row < mirrorPoint; row++){
+      //loop cols 239 to 300 - right arm
+      for (int col = 239; col<300; col++){
+        sourcePixel = pixels[row][col];
+        receivePixel = pixels[mirrorPoint + mirrorPoint - row][col];
+        receivePixel.setColor(sourcePixel.getColor());
+      }
+    }
+  }
+
+  public void mirrorGull()
+  {
+    int mirrorPoint = 230; //mirror col 240
+    Pixel sourcePixel = null;
+    Pixel receivePixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    for (int row = 230; row < 326; row++){
+      for (int col = mirrorPoint; col < 347; col++){
+        sourcePixel = pixels[row][col];
+        receivePixel = pixels[row][mirrorPoint+mirrorPoint-col];
+        receivePixel.setColor(sourcePixel.getColor());
       }
     }
   }
