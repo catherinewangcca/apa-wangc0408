@@ -162,9 +162,17 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
+    swan.edgeDetection(50);
     swan.explore();
   }
+
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection2(30);
+    swan.explore();
+  }
+
 
   public static void testBlur()
   {
@@ -202,7 +210,7 @@ public class PictureTester
     //myCollage();
     //testCopy();
     //testEdgeDetection();
-    //testEdgeDetection2();
+    testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
@@ -210,6 +218,6 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
 
-    testBlur();
+    //testBlur();
   }
 }
