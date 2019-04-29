@@ -158,7 +158,7 @@ public class Picture extends SimplePicture
   }
 
 
-  /** Method to negate all of the colors */
+  /** Method to brighten fish */
   public void underwater()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -193,7 +193,36 @@ public class Picture extends SimplePicture
     }
   }
 
+  public void blur(int x, int y, int w, int h, int n)
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int average = 0;
+    Pixel left = null;
+    Pixel right = null;
+    Pixel top = null;
+    Pixel bottom = null;
+    
 
+    while(n>=0){
+    for (int row = y; row < y+h; row++)
+    {
+      for (int col = x; col < x+w; col++)
+      {
+        //if (col -1 >= 0 && row -1 >= 0 && x-1 >= 0 && y-1 >= 0 && x+1<=x+h && y+1<=y+h){
+        if (col -1 >= 0 && row -1 >= 0 && col+1<=x+h && row+1<=y+h){
+        left = pixels[row][col-1];
+        right = pixels[row][col+1];
+        top = pixels[row-1][col];
+        bottom = pixels[row + 1][col];
+        pixels[row][col].setBlue((int)((top.getBlue() + bottom.getBlue() + left.getBlue() + right.getBlue())*.25));
+        pixels[row][col].setGreen((int)((top.getGreen() + bottom.getGreen() + left.getGreen() + right.getGreen())*.25));
+        pixels[row][col].setRed((int)((top.getRed() + bottom.getRed() + left.getRed() + right.getRed())*.25));
+      }
+      }
+    } 
+    n--;
+}
+}  
 
   
   /** Method that mirrors the picture around a 
@@ -470,6 +499,7 @@ public class Picture extends SimplePicture
     }
   }
   
+
   
   /* Main method for testing - each class in Java can have a main 
    * method 

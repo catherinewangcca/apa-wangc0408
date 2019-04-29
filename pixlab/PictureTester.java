@@ -165,6 +165,16 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+
+  public static void testBlur()
+  {
+
+    Picture butterfly1 = new Picture("butterfly1.jpg");
+    butterfly1.blur(300, 300, 50, 90, 10);
+
+    butterfly1.explore();
+    
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -189,7 +199,7 @@ public class PictureTester
     //testMirrorArms();
     //testMirrorGull();
     //testCollage();
-    myCollage();
+    //myCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
@@ -199,5 +209,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+
+    testBlur();
   }
 }

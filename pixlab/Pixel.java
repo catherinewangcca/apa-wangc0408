@@ -353,6 +353,8 @@ public class Pixel
    return (getRed() + getGreen() + getBlue()) / 3;
  }
 
+ 
+
 
  public double lumosity()
  {
