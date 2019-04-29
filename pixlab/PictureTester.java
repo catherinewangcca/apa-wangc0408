@@ -117,13 +117,46 @@ public class PictureTester
     seagull.explore();
   }
 
+  public static void testCopy()
+  {
+    Picture swan = new Picture("swan.jpg");
+    Picture snowman = new Picture("snowman.jpg");
+    swan.copy(snowman, 10, 10, 0, 0, 50, 50);
+    swan.explore();
+  }
+
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture("640x480.jpg"); 
     canvas.createCollage();
     canvas.explore();
   }
+  public static void myCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    Picture barbaraS = new Picture("barbaraS.jpg");
+    Picture snowman = new Picture("snowman.jpg");
+    Picture swan = new Picture("swan.jpg");
+    Picture kitten2 = new Picture("kitten2.jpg");
+    Picture seagull = new Picture("seagull.jpg");
+
+    barbaraS.grayscale();
+    canvas.copy(barbaraS, 0, 0, 12, 12, 110, 90);
+
+    barbaraS.negate();
+    canvas.copy(barbaraS, 0, 90, 12, 12, 110, 90);
+
+    kitten2.mirrorVertical();
+    canvas.copy(kitten2, 200, 0, 83, 136, 200, 400);
+
+    kitten2.onlyBlue();
+    canvas.copy(kitten2, 200, 200, 83, 136, 240, 240);
+  
+    canvas.explore();
+  }
+
+
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -154,8 +187,9 @@ public class PictureTester
     //testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+    //testMirrorGull();
     //testCollage();
+    myCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
