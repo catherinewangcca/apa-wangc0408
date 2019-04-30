@@ -173,6 +173,13 @@ public class PictureTester
     swan.explore();
   }
 
+  public static void testEdgeDetection3()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection3(10);
+    swan.explore();
+  }
+
 
   public static void testBlur()
   {
@@ -210,7 +217,8 @@ public class PictureTester
     //myCollage();
     //testCopy();
     //testEdgeDetection();
-    testEdgeDetection2();
+    //testEdgeDetection2();
+    testEdgeDetection3();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
