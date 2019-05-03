@@ -157,6 +157,65 @@ public class Picture extends SimplePicture
     }
   }
 
+  public void setGrayAverage(){
+    Pixel[][] pixels = this.getPixels2D();
+    //int temp = 0;
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        int temp;
+
+        
+        temp = (int)pixelObj.getAverage();
+
+        pixelObj.setRed(temp);
+        pixelObj.setGreen(temp);
+        pixelObj.setBlue(temp);
+
+      }
+    }
+  }
+
+  public void setGrayLumonisity(){
+    Pixel[][] pixels = this.getPixels2D();
+    //int temp = 0;
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        int temp;
+
+
+        //LUMOSITY ALGORITHM
+        temp = (int)pixelObj.lumosity();
+
+        pixelObj.setRed(temp);
+        pixelObj.setGreen(temp);
+        pixelObj.setBlue(temp);
+
+      }
+    }
+  }
+
+  public void setGrayLightness(){
+    Pixel[][] pixels = this.getPixels2D();
+    //int temp = 0;
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        int temp;
+        temp = (int)pixelObj.lightness();
+
+        pixelObj.setRed(temp);
+        pixelObj.setGreen(temp);
+        pixelObj.setBlue(temp);
+
+      }
+    }
+  }
+
 
   /** Method to brighten fish */
   public void underwater()

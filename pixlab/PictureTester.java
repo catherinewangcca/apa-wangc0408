@@ -37,9 +37,15 @@ public class PictureTester
   public static void testGrayscale()
   {
     Picture arch = new Picture("arch.jpg");
+    Picture archh = new Picture("archh.jpg");
+    Picture arrch = new Picture("arrch.jpg");
     arch.explore();
-    arch.grayscale();
+    arch.setGrayAverage();
     arch.explore();
+    archh.setGrayLumonisity();
+    archh.explore();
+    arrch.setGrayLightness();
+    arrch.explore();
   }
 
   public static void testFixUnderwater()
@@ -203,7 +209,7 @@ public class PictureTester
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
-    //testGrayscale();
+    testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorVerticalRightToLeft();
@@ -218,7 +224,7 @@ public class PictureTester
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
-    testEdgeDetection3();
+    //testEdgeDetection3();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
