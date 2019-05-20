@@ -16,7 +16,9 @@ import java.util.*;
 
 public class Pong extends Canvas implements KeyListener, Runnable
 {
-  private BlinkyBall ball;
+  //private BlinkyBall ball;
+  //private SpeedUpBall ball;
+  private Ball ball;
   private Paddle leftPaddle;
   private Paddle rightPaddle;
   private boolean[] keys;
@@ -38,9 +40,11 @@ public class Pong extends Canvas implements KeyListener, Runnable
     	topWall = new Wall(0, 0, 800, 1, Color.PINK);
     	bottomWall = new Wall(599, 0, 600, 1, Color.PINK);
 
-  	 //instantiate a Ball
-		ball = new BlinkyBall(200, 200, 10, 10, Color.BLUE, 3, 1);
-		
+  	//instantiate a Ball
+		//ball = new BlinkyBall(200, 200, 10, 10, Color.BLUE, 3, 1);
+    //ball = new SpeedUpBall(200, 200, 10, 10, Color.BLUE, 3, 1);
+		ball = new Ball(200, 200, 10, 10, Color.BLUE, 3, 1);
+
     //instantiate a left Paddle
 		leftPaddle = new Paddle(30, 250, 10, 100, Color.BLACK, 5);
 		
@@ -188,7 +192,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 >= leftPaddle.getY() && ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight()))
 	{
 		if (ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed())){
-				ball.setYSpeed(-ball.getYSpeed());
+				ball.setYSpeed(-(ball.getYSpeed()+1));// if SpeedUp
+        //ball.setYSpeed(-ball.getYSpeed()); //normal
+
 				//leftCount.addPoints();
 			}	
 		else	
@@ -205,7 +211,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 >= rightPaddle.getY() && ball.getY() + ball.getHeight() < rightPaddle.getY() + rightPaddle.getHeight()))
 	{
 		if (ball.getX() <= rightPaddle.getX() /*took out the next phrase*/ - rightPaddle.getWidth() + Math.abs(ball.getXSpeed())){
-				ball.setYSpeed(-ball.getYSpeed());
+				ball.setYSpeed(-(ball.getYSpeed()+1)); // if SpeedUp
+        //ball.setYSpeed(-ball.getYSpeed()); //normal
+
 				//rightCount.addPoints();
 			}
 		else	

@@ -5,7 +5,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block, implements Collidable
 {
   private int xSpeed;
   private int ySpeed;
@@ -110,7 +110,13 @@ public class Ball extends Block
     return ySpeed;
   }
 
-  
+  public boolean didCollideLeft(Block obj){
+    
+  }
+
+   boolean didCollideRight(Block obj);  
+   boolean didCollideTop(Block obj);  
+   boolean didCollideBottom(Block obj);  
 
   //add a toString() method
   public String toString()
