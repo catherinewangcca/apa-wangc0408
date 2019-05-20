@@ -17,17 +17,11 @@ import java.util.ArrayList;
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
   private Ship ship;
-  private Alien alienOne;
-  private Alien alienTwo;
-  private Ammo bullet;
-  private Bullets bullets;
+  //private Alien alienOne;
+  //private Alien alienTwo;
+  //mprivate Ammo bullet;
+  private Bullets shots;
   private AlienHorde horde;
-
-  /* uncomment once you are ready for this part
-   *
-   private AlienHorde horde;
-   private Bullets shots;
-  */
 
   private boolean[] keys;
   private BufferedImage back;
@@ -45,9 +39,11 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     //alienOne = new Alien(100, 100, 50, 50, 3);
     //alienTwo = new Alien(200, 100, 50, 50, 3);
     //bullet = new Ammo(300, 280, 5);
-    horde = new AlienHorde(10);
-    bullets = new Bullets();
-    
+    horde = new AlienHorde(12);
+    shots = new Bullets();
+
+
+    shots.add(new Ammo(ship.getX()+20, ship.getY(),5));
 
 
     this.addKeyListener(this);
@@ -75,20 +71,21 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     //we will draw all changes on the background image
     Graphics graphToBack = back.createGraphics();
 
-    graphToBack.setColor(Color.BLUE);
-    graphToBack.drawString("StarFighter ", 25, 50 );
+ 
     graphToBack.setColor(Color.BLACK);
     graphToBack.fillRect(0,0,800,600);
+    graphToBack.setColor(Color.BLUE);
+    graphToBack.drawString("StarFighter ", 25, 50 );
 
+    graphToBack.setColor(Color.YELLOW);
     ship.draw(graphToBack);
-    horde.drawEmAll(graphToBack);
-    bullets.drawEmAll(graphToBack);
     //alienOne.draw(graphToBack);
     //alienTwo.draw(graphToBack);
 
     if(keys[0] == true)
     {
       ship.move("LEFT");
+      shots.moveEmAll();
     }
 
     if(keys[1] == true)
@@ -106,11 +103,21 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
       ship.move("DOWN");
     }
 
+    if(keys[4] == true)
+    {
+      shots.add(new Ammo(ship.getX()+20, ship.getY(),5));
+      keys[4] = false;
+    }
+
+    horde.drawEmAll(graphToBack);
+    shots.drawEmAll(graphToBack);
+    shots.cleanEmUp();
+
     //alienOne.move("");
     //alienTwo.move("");
     //bullet.move("");
-    horde.moveEmAll();
-    bullets.moveEmAll();
+    horde.moveEmAll("RIGHT");
+    shots.moveEmAll();
 
     ship.draw(graphToBack);
     //alienOne.draw(graphToBack);
@@ -118,7 +125,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     //bullet.draw(graphToBack);
 
     horde.drawEmAll(graphToBack);
-    bullets.drawEmAll(graphToBack);
+    shots.drawEmAll(graphToBack);
 
     //add code to move Ship, Alien, etc.
 
