@@ -118,7 +118,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     
 
 
-    horde.wallBounce();
+    //horde.wallBounce();
 
 
     horde.moveEmAll("LEFT");

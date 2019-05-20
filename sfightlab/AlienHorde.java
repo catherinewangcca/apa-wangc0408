@@ -14,12 +14,13 @@ public class AlienHorde
 {
   private List<Alien> aliens;
   private String direction;
+  private int tick;
 
   public AlienHorde(int size)
   {
     aliens = new ArrayList<Alien>();
     for (int i = 0; i<size; i++){
-      aliens.add(new Alien(100 + 70*i, 100, 50, 50, 3)); 
+      aliens.add(new Alien(100 + 70*i, 100, 30, 30, 1)); 
     }
     direction = "LEFT";
   }
@@ -53,7 +54,7 @@ public class AlienHorde
         if (maxX > 800) {
             direction = "LEFT";
             System.out.print("lefttest");
-        } else if (minX < 50) {
+        } else if (minX < 0) {
             direction = "RIGHT";
             System.out.print("righttest");
         }
@@ -61,8 +62,8 @@ public class AlienHorde
     }
 
     public void moveEmAll(String direction) {
-        for (Alien al : aliens) {
-            al.move(direction);
+        for (Alien alien : aliens) {
+            alien.move();
         }
     }
 

@@ -71,7 +71,7 @@ public class Ammo extends MovingThing
   }
 
   public boolean hit(Alien alien){
-    if (getX() + 15 >= alien.getX() && getX() <= alien.getX() + alien.getWidth() && getY()-10 >= alien.getY() && getY() <= alien.getY() + alien.getHeight()){
+    if (getX() + 10 >= alien.getX() && getX() <= alien.getX() + alien.getWidth() && getY()-10 >= alien.getY() && getY() <= alien.getY() + alien.getHeight()){
       return true;
     }
     return false;

@@ -15,6 +15,7 @@ public class Alien extends MovingThing
   private Image image;
   private String direction;
   private int yCount;
+  private int i = 0;
 
 
   public Alien()
@@ -78,6 +79,28 @@ public class Alien extends MovingThing
     }
   }
 
+  public void move(){
+      if (i >= 0 && i < 300){
+        move("LEFT");
+        i++;
+      }
+      else if (i >= 300 && i < 400){
+        move("DOWN");
+        i++;
+      }
+      else if (i >= 400 && i < 700){
+        move("RIGHT");
+        i++;
+      }
+      else if (i >= 700 && i < 800){
+        move("DOWN");
+        i++;
+      }
+      if (i == 800){
+        i = 0;
+      }
+    }
+  
 
   public boolean didCollideLeft(){
     return true;
