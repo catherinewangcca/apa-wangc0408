@@ -111,18 +111,18 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
     horde.drawEmAll(graphToBack);
     shots.drawEmAll(graphToBack);
+    //horde.removeDeadOnes(shots.getList());
+    
     shots.cleanEmUp();
+    
 
-    //alienOne.move("");
-    //alienTwo.move("");
-    //bullet.move("");
-    horde.moveEmAll("RIGHT");
+
+
+    horde.moveEmAll("LEFT");
     shots.moveEmAll();
 
     ship.draw(graphToBack);
-    //alienOne.draw(graphToBack);
-    //alienTwo.draw(graphToBack);
-    //bullet.draw(graphToBack);
+
 
     horde.drawEmAll(graphToBack);
     shots.drawEmAll(graphToBack);
@@ -132,7 +132,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
     //add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
-
+     shots.cleanEmUp();
     twoDGraph.drawImage(back, null, 0, 0);
   }
 

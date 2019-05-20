@@ -26,13 +26,13 @@ public class Alien extends MovingThing
   public Alien(int x, int y)
   {
     this(x,y,30,30,3);
-    direction = "LEFT";
+    direction = "RIGHT";
   }
 
   public Alien(int x, int y, int s)
   {
     this(x,y,30,30,s);
-    direction = "LEFT";
+    direction = "RIGHT";
    } 
 
   public Alien(int x, int y, int w, int h, int s)
@@ -78,10 +78,24 @@ public class Alien extends MovingThing
     }
   }
 
-  
 
-/*
-  public void move(String direction)
+  public void move(){
+    if (getX() >= 700){
+      for (int i = 0; i<30; i++){
+      move("DOWN");
+      }
+      move("LEFT");
+      if (getX() <= 10){
+        for (int i = 0; i<30; i++){
+      move("DOWN");
+      }
+      move("RIGHT");
+      }
+    }
+  }
+
+
+  /*public void move(String direction)
   {
     if (direction.equals("LEFT") && getX() >=  speed){
       setX(getX() - speed);
