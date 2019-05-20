@@ -20,26 +20,26 @@ public class Alien extends MovingThing
   public Alien()
   {
     this(0,0,30,30,3);
-    direction = "RIGHT";
+    direction = "LEFT";
   }
 
   public Alien(int x, int y)
   {
     this(x,y,30,30,3);
-    direction = "RIGHT";
+    direction = "LEFT";
   }
 
   public Alien(int x, int y, int s)
   {
     this(x,y,30,30,s);
-    direction = "RIGHT";
+    direction = "LEFT";
    } 
 
   public Alien(int x, int y, int w, int h, int s)
   {
     super(x, y, w,h);
     speed=s;
-    direction = "RIGHT";
+    direction = "LEFT";
     try
     {
       URL url = getClass().getResource("alien.jpg");
@@ -79,66 +79,9 @@ public class Alien extends MovingThing
   }
 
 
-  public void move(){
-    if (getX() >= 700){
-      for (int i = 0; i<30; i++){
-      move("DOWN");
-      }
-      move("LEFT");
-      if (getX() <= 10){
-        for (int i = 0; i<30; i++){
-      move("DOWN");
-      }
-      move("RIGHT");
-      }
-    }
+  public boolean didCollideLeft(){
+    return true;
   }
-
-
-  /*public void move(String direction)
-  {
-    if (direction.equals("LEFT") && getX() >=  speed){
-      setX(getX() - speed);
-    }
-    else if (direction.equals("RIGHT") && getX() <= 720 - getWidth() - speed){
-      setX(getX() + speed);
-      System.out.println("right triggered");
-    }
-    else if (direction.equals("DOWN") && getY() <= 520 - speed - getHeight()){
-      setY(getY() + speed);
-    }
-  }
-
-  public void setDirection(String dir)
-  {
-    direction = dir;
-  }
-
-  public void move()
-  {
-    if((getX() < 15 && direction.equals("LEFT")) || (getX() > 670 && direction.equals("RIGHT")))
-    {
-      move("DOWN"); /*
-      for (int i = 0; i<15; i++){
-        move("DOWN");
-      }
-
-      if(getY() >= yCount*getHeight()) {
-        if("LEFT".equals(direction)){
-          //direction = "RIGHT";
-          move("RIGHT");
-
-        }
-        else {
-          move("LEFT");
-          //direction = "LEFT";
-        }
-        yCount += 2;
-      }
-    } else
-      move(direction);
-  }
-  */
 
   public void draw( Graphics window )
   {

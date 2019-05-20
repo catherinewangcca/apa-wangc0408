@@ -21,7 +21,7 @@ public class AlienHorde
     for (int i = 0; i<size; i++){
       aliens.add(new Alien(100 + 70*i, 100, 50, 50, 3)); 
     }
-    direction = "RIGHT";
+    direction = "LEFT";
   }
 
   public void add(Alien al)
@@ -37,12 +37,35 @@ public class AlienHorde
   }
 
   
-  public void moveEmAll(String dir)
-  {
-    for(Alien alien : aliens){
-      alien.move();
+  public void wallBounce() {
+        int minX = 999;
+        int maxX = 0;
+        for (Alien al : aliens) {
+            if (al.getX() < minX) {
+                minX = al.getX();
+                System.out.print("testone");
+            }
+            if (al.getX() > maxX) {
+                maxX = al.getX();
+                System.out.print("testtwo");
+            }
+        }
+        if (maxX > 800) {
+            direction = "LEFT";
+            System.out.print("lefttest");
+        } else if (minX < 50) {
+            direction = "RIGHT";
+            System.out.print("righttest");
+        }
+        moveEmAll(direction);
     }
-  }
+
+    public void moveEmAll(String direction) {
+        for (Alien al : aliens) {
+            al.move(direction);
+        }
+    }
+
 
   public void removeDeadOnes(List<Ammo> shots)
   {

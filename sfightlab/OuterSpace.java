@@ -24,6 +24,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
   private AlienHorde horde;
 
   private boolean[] keys;
+  private int shotIndex;
+  private int tick;
   private BufferedImage back;
 
   public OuterSpace()
@@ -85,7 +87,6 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     if(keys[0] == true)
     {
       ship.move("LEFT");
-      shots.moveEmAll();
     }
 
     if(keys[1] == true)
@@ -112,10 +113,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     horde.drawEmAll(graphToBack);
     shots.drawEmAll(graphToBack);
     //horde.removeDeadOnes(shots.getList());
-    
+
     shots.cleanEmUp();
     
 
+
+    horde.wallBounce();
 
 
     horde.moveEmAll("LEFT");
