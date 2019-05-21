@@ -70,15 +70,28 @@ public class AlienHorde
 
   public void removeDeadOnes(List<Ammo> shots)
   {
-
-    for (int i = aliens.size()-1; i >= 0; i--) {
-      for(int a = 0; i<shots.size(); a++){
-        if (shots.get(a).hit(aliens.get(i))) {
+    for(int i = aliens.size()-1; i >= 0; i--) {
+      for(Ammo a : shots) {
+          if(a.hit(aliens.get(i))) {
             aliens.remove(i);
-          break;
-        }
+            break;
+          }
       }
     }
+  }
+
+  public boolean lost()
+  {
+    for (int i = 0; i < aliens.size(); i++){
+      if ((aliens.get(i)).getY() >= 550){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public int hordeSize(){
+    return aliens.size();
   }
 
   public String toString()

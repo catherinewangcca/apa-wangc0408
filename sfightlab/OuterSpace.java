@@ -27,6 +27,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
   private int shotIndex;
   private int tick;
   private BufferedImage back;
+  private Alien test;
 
   public OuterSpace()
   {
@@ -37,13 +38,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     //instantiate other instance variables
     //Ship, Alien
 
-    ship = new Ship(300, 300, 50, 50, 3);
+    ship = new Ship(300, 500, 50, 50, 3);
     //alienOne = new Alien(100, 100, 50, 50, 3);
     //alienTwo = new Alien(200, 100, 50, 50, 3);
     //bullet = new Ammo(300, 280, 5);
     horde = new AlienHorde(12);
     shots = new Bullets();
-
+    test = new Alien();
 
     shots.add(new Ammo(ship.getX()+20, ship.getY(),5));
 
@@ -112,10 +113,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
     horde.drawEmAll(graphToBack);
     shots.drawEmAll(graphToBack);
-    //horde.removeDeadOnes(shots.getList());
 
     shots.cleanEmUp();
-    
+    horde.removeDeadOnes(shots.getList());
 
 
     //horde.wallBounce();
@@ -135,7 +135,19 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
     //add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
-     shots.cleanEmUp();
+     
+
+    if (horde.hordeSize() == 0){
+      graphToBack.setColor(Color.RED);
+      graphToBack.drawString("You have defeated the aliens!", 300, 200);
+    }
+
+    if (horde.lost()){
+      graphToBack.setColor(Color.RED);
+      graphToBack.drawString("You have lost to the aliens! They have passed your point of origin", 300, 200);
+    }
+
+    shots.cleanEmUp();
     twoDGraph.drawImage(back, null, 0, 0);
   }
 

@@ -16,6 +16,7 @@ public class Alien extends MovingThing
   private String direction;
   private int yCount;
   private int i = 0;
+  private int a = 0;
 
 
   public Alien()
@@ -84,23 +85,27 @@ public class Alien extends MovingThing
         move("LEFT");
         i++;
       }
-      else if (i >= 300 && i < 400){
+      else if (i >= 300 && i < 350){
         move("DOWN");
         i++;
       }
-      else if (i >= 400 && i < 700){
+      else if (i >= 350 && i < 650){
         move("RIGHT");
         i++;
       }
-      else if (i >= 700 && i < 800){
+      else if (i >= 650 && i < 700){
         move("DOWN");
         i++;
       }
-      if (i == 800){
+      if (i == 700){
         i = 0;
+        a++;
       }
     }
   
+  public int getA(){
+    return a;
+  }
 
   public boolean didCollideLeft(){
     return true;
